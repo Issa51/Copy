@@ -1,0 +1,36 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mon site</title>
+    
+    <script src="https://kit.fontawesome.com/7e2a69d5dd.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+</head>
+<body>
+
+<p id="textToCopy">Texte que vous voulez copier</p>
+<i class="fa-solid fa-copy" id="copyIcon" onclick="copyText()"></i>
+<div id="alertDiv" style="display: none; background-color: lightblue; padding: 10px;">Le texte a été copié avec succès!</div>
+
+<script>
+    function copyText() {
+        const text = document.getElementById('textToCopy').innerText;
+        
+        navigator.clipboard.writeText(text).then(function() {
+            // Afficher le div d'alerte
+            document.getElementById('alertDiv').style.display = 'block';
+            setTimeout(function () {
+                document.getElementById('alertDiv').style.display = 'none';
+            }, 3000); // Masquer l'alerte après 3 secondes
+        }, function(err) {
+            console.error('Impossible de copier le texte', err);
+        });
+    }
+</script>
+
+</body>
+</html>
+ 
